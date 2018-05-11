@@ -1,0 +1,254 @@
+<html>
+
+<head>
+    <title>traffic</title>
+    <style>
+        body {
+            font-family: Microsoft JhengHei;
+        }
+
+        .mapstyle {
+            width: 600px;
+            height: 600px;
+            float: left;
+            margin: 30px 0 30px 15px;
+
+        }
+
+        .trafficstyle {
+            width: 200px;
+            text-align: left;
+            float: left;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .directionstyle {
+            width: 300px;
+            float: left;
+            margin-top: 15px;
+        }
+
+        .transitdirectionstyle {
+            width: 300px;
+            margin-left: 20px;
+            float: left;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col" style="text-align: center;margin-top: 30px">
+                <h2>--預估交通費用計算--</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="map" class="mapstyle"></div>
+            </div>
+            <div class="col">
+                <div id="traffic" class="trafficstyle">
+                    <div class="row">
+                        <div class="col">
+                            <h3>自行開車</h3>
+                            <ul>
+                                <li>
+                                    <p>總時間 :
+                                        <span id="drivetime"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總里程 :
+                                        <span id="drivekm"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總費用 :
+                                        <span id="driveprice"></span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <br/>
+                        </div>
+                        <div class="col">
+                            <h3>搭計程車</h3>
+                            <ul>
+                                <li>
+                                    <p>總時間 :
+                                        <span id="taxitime"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總里程 :
+                                        <span id="taxikm"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總費用 :
+                                        <span id="taxiprice"></span>
+                                    </p>
+                                </li>
+                            </ul>
+                            <br/>
+                        </div>
+                        <div class="col">
+                            <h3>大眾運輸工具</h3>
+                            <ul>
+                                <li>
+                                    <p>總時間 :
+                                        <span id="transittime"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總里程 :
+                                        <span id="transitkm"></span>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>總費用 :
+                                        <span id="transitprice"></span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div id="drivedirection" class="directionstyle"></div>
+            </div>
+            <div class="col">
+                <div id="transitdirection" class="transitdirectionstyle"></div>
+            </div>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLUgDdDXO8x8SXNfyuEL-DCp6ZVDd0yVY" async defer>
+        </script>
+        <script>
+            var map;
+            var directionsService = null;
+            var directionsDisplay = null;
+            var point1 = null;
+            var point2 = null;
+            var distance = 0;
+            var highway = 0;
+            var driveprice = 0;
+            var taxiprice = 0;
+
+            window.onload = function () {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 24.7571075,
+                        lng: 120.952429
+                    },
+                    zoom: 15
+                });
+
+                directionsService = new google.maps.DirectionsService();
+                directionsDisplay = new google.maps.DirectionsRenderer();
+                directionsDisplay.setMap(map);
+                directionsDisplay.setPanel(document.getElementById('drivedirection'));
+                directionsService1 = new google.maps.DirectionsService();
+                directionsDisplay1 = new google.maps.DirectionsRenderer();
+                directionsDisplay1.setMap(map);
+                directionsDisplay1.setPanel(document.getElementById('transitdirection'));
+
+                map.addListener("click", function (e) {
+                    if (point1 != null && point2 != null) {
+                        point1 = null;
+                        point2 = null;
+                    }
+                    if (point1 == null) {
+                        point1 = e.latLng.lat() + "," + e.latLng.lng();
+                        return;
+                    }
+                    if (point2 == null) {
+                        point2 = e.latLng.lat() + "," + e.latLng.lng();
+                    }
+
+                    console.log(point1);
+                    console.log(point2);
+
+                    if (point1 != null && point2 != null) {
+                        directionsService.route({
+                            origin: point1,
+                            destination: point2,
+                            travelMode: 'DRIVING'
+                        }, function (response, status) {
+                            if (status === 'OK') {
+                                console.log(response);
+                                directionsDisplay.setDirections(response);
+                            } else {
+                                window.alert('Directions request failed due to' + status);
+                            }
+                            for (var i of response.routes) {
+                                console.log(i);
+                                for (var j of i.legs) {
+                                    //console.log(j);
+                                    document.getElementById("drivetime").innerText = j.duration.text;
+                                    document.getElementById("taxitime").innerText = j.duration.text;
+                                    distance = parseFloat(j.distance.text.split(' ')[0]);
+                                    document.getElementById("drivekm").innerText = j.distance.text;
+                                    document.getElementById("taxikm").innerText = j.distance.text;
+                                    console.log(distance);
+                                    for (var k of j.steps) {
+                                        console.log(k);
+                                        if (k.instructions.indexOf("收費路段") > -1) { //== k.instructions.includes("收費路段") 回傳true或false
+                                            highway += parseFloat(k.distance.text.split(' ')[0]); //割開之後是"1.6,公里"，拿出第0個的公里數
+                                            console.log(highway);
+                                            console.log(k.instructions);
+                                        }
+                                    }
+                                }
+                            }
+                            driveprice = Math.floor((distance * 5) + (highway * 1.2));
+                            document.getElementById("driveprice").innerText = driveprice + " 元";
+                            console.log(driveprice);
+
+                            if (distance < 1.5) {
+                                taxiprice = 85;
+                                document.getElementById("taxiprice").innerText = taxiprice + " 元";
+                                console.log(taxiprice);
+                            } else if (distance > 1.5) {
+                                taxiprice = Math.floor(85 + (distance - 1.5) / 0.05);
+                                document.getElementById("taxiprice").innerText = taxiprice + " 元";
+                                console.log(taxiprice);
+                            }
+                        });
+                        directionsService1.route({
+                            origin: point1,
+                            destination: point2,
+                            travelMode: 'TRANSIT'
+                        }, function (response, status) {
+                            if (status === 'OK') {
+                                console.log(response);
+                                directionsDisplay1.setDirections(response);
+                            } else {
+                                window.alert('Directions request failed due to' + status);
+                            }
+                            for (var i of response.routes) {
+                                if (i.fare != undefined) {
+                                    document.getElementById("transitprice").innerText = i.fare.value +
+                                        " 元";
+                                } else {
+                                    document.getElementById("transitprice").innerText = "查無此票價";
+                                }
+                                for (var j of i.legs) {
+                                    document.getElementById("transittime").innerText = j.duration.text;
+                                    document.getElementById("transitkm").innerText = j.distance.text;
+                                }
+                            }
+                        })
+                    }
+
+                });
+
+
+            }
+        </script>
+</body>
+
+</html>
