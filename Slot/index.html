@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Slot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        img {
+            border: 3px solid transparent;
+        }
+
+        .run {
+            border: 3px solid rgb(214, 44, 14);
+            transition: all .3s;
+            box-sizing:border-box;
+            box-shadow: tomato;
+        }
+
+        .run-none {
+            transition: all .8s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3 style="text-align: center;font-family:Microsoft JhengHei;margin-top:30px"><b>今天吃什麼</b></h3>
+        <div class="row mt-5">
+            <div class="col">
+                <img id="i1" src='cola.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i2" src='pizza-slice.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i3" src='broccoli.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i4" src='lobster.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i5" src='cocktail.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i6" src='orange.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i7" src='watermelon.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i8" src='corn.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i9" src='pint.png' alt='' />
+            </div>
+            <div class="col text-right">
+                <img id="i10" src='chicken-leg.png' alt='' />
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <img id="i26" src='grape.png' alt='' />
+            </div>
+            <div class="col">
+            </div>
+            <div class="col text-right">
+                <img id="i11" src='ramen.png' alt='' />
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <img id="i25" src='egg.png' alt='' />
+            </div>
+            <div class="col">
+            </div>
+            <div class="col text-right">
+                <img id="i12" src='toast.png' alt='' />
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <img id="i24" src='fish.png' alt='' />
+            </div>
+            <div class="col">
+            </div>
+            <div class="col text-right">
+                <img id="i13" src='hamburger.png' alt='' />
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <img id="i23" src='doughnut.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i22" src='pork.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i21" src='nigiri.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i20" src='coffee.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i19" src='potatoes.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i18" src='tomato.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i17" src='spaghetti.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i16" src='popcorn.png' alt='' />
+            </div>
+            <div class="col">
+                <img id="i15" src='carrot.png' alt='' />
+            </div>
+            <div class="col text-right">
+                <img id="i14" src='brochette.png' alt='' />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <button type="button" class="btn btn-danger btn-block" id="start">start</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var img = document.getElementsByTagName("img");
+        var bricks = [];
+        var pushprick = 0;
+        var brick;
+        var first = Math.floor(Math.random() * bricks.length);
+        var steps = 0;
+
+        for (var j = 1; j <= img.length; j++) {
+            brick = document.getElementById("i" + j);
+            if (!brick) {
+                break;
+            }
+            bricks.push(brick);
+        }
+        console.log(bricks);
+
+        document.getElementById("start").onclick = function () {
+            steps = 30 + Math.floor(Math.random() * 10);
+            console.log(steps);
+            bricks[first].className = "run";
+            run();
+        }
+
+        function run() {
+            bricks[first].className = "run-none";
+            first++;
+            if (first > bricks.length - 1) {
+                first = 0;
+            }
+            bricks[first].className = "run";
+            if (steps > 0) {
+                steps--;
+                setTimeout(run, 95);
+            }
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
