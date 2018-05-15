@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>猜數字</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+    <style>
+      body{
+        font-family: Microsoft JhengHei;
+        font-size:17px;
+      }
+    </style>
+</head>
+<body>
+  <div class="container mt-5" style="position:relative">
+    <div class="row">
+      <div class="col-3">
+        <button type="button" class="btn btn-dark btn-block" id="start" style="font-size:17px">開始遊戲</button>
+      </div>
+      <div class="col-6" style="position: absolute;left:300px">
+        <p>遊戲歷程</p>
+        <ul class="list-group" id="list">
+
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <button type="button" class="btn btn-dark btn-block mt-3" id="answer" style="font-size:17px" disabled="true">看答案</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 mt-5">
+        <div class="form-group">
+          <label for="">輸入數字</label>
+          <input type="text" name="" id="input" class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 mt-3">
+        <button type="button" class="btn btn-dark btn-block" id="check" style="font-size:17px" disabled="true">檢查答案</button>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-3  mt-3">
+        <button type="button" class="btn btn-dark btn-block" id="clear" style="font-size:17px" disabled="true">放棄重來</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    var randomnumber = "";
+    var start = document.getElementById("start");
+    var input = document.getElementById("input");
+    var check = document.getElementById("check");
+    var clear = document.getElementById("clear");
+
+    var list = document.getElementById("list");
+
+    start.onclick = function () {
+      randomnumber = "";
+      for (var i = 0; i <= 3;) {
+        var number = Math.floor(Math.random() * 10);
+        if (!randomnumber.includes(number)) {
+          randomnumber += number;
+          i++;
+        }
+      }
+      console.log(randomnumber);
+      start.disabled = true;
+      check.disabled = false;
+      answer.disabled = false;
+      clear.disabled = false;
+    }
+
+    var answer = document.getElementById("answer");
+    answer.onclick = function () {
+      alert("答案是 " + randomnumber);
+    }
+
+    check.onclick = function () {
+      var a = 0;
+      var b = 0;
+      for (var i = 0; i <= 3; i++) {
+        if (randomnumber.includes(input.value[i])) {
+          if (randomnumber[i] == input.value[i]) {
+            a++;
+          } else {
+            b++;
+          }
+        }
+      }
+      console.log(input.value);
+      var li = document.createElement("li");
+      li.innerText = input.value;
+      li.className = "list-group-item";
+      var pill = document.createElement("div");
+      pill.className = "badge badge-pill badge-primary float-right";
+      pill.innerText = a + "A" + b + "B";
+      list.appendChild(li).appendChild(pill);
+      input.value = "";
+      if (a == 4){
+        alert("猜對了!");
+      }
+    }
+
+    clear.onclick = function () {
+      input.value = "";
+      list.innerHTML = "";
+      randomnumber = "";
+      for (var i = 0; i <= 3;) {
+        var number = Math.floor(Math.random() * 10);
+        if (!randomnumber.includes(number)) {
+          randomnumber += number;
+          i++;
+        }
+      }
+      start.disabled = false;
+      answer.disabled = true;
+      check.disabled = true;
+      clear.disabled = true;
+    }
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
