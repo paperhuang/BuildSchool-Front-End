@@ -10,15 +10,23 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
-    <style>
-      body{
-        font-family: Microsoft JhengHei;
-        font-size:17px;
-      }
-    </style>
+  <style>
+    body {
+      font-family: Microsoft JhengHei;
+      font-size: 17px;
+    }
+  </style>
 </head>
+
 <body>
   <div class="container mt-5" style="position:relative">
+    <div class="row">
+      <div class="col">
+        <p style="font-size: 24px">
+          <b>➤ 1A2B 猜數字遊戲</b>
+        </p>
+      </div>
+    </div>
     <div class="row">
       <div class="col-3">
         <button type="button" class="btn btn-dark btn-block" id="start" style="font-size:17px">開始遊戲</button>
@@ -38,8 +46,8 @@
     <div class="row">
       <div class="col-3 mt-5">
         <div class="form-group">
-          <label for="">輸入數字</label>
-          <input type="text" name="" id="input" class="form-control" placeholder="" aria-describedby="helpId">
+          <label for="">請輸入四碼數字</label>
+          <input type="text" name="" id="input" class="form-control" placeholder="例如：5678" aria-describedby="helpId">
         </div>
       </div>
     </div>
@@ -102,13 +110,20 @@
       li.innerText = input.value;
       li.className = "list-group-item";
       var pill = document.createElement("div");
-      pill.className = "badge badge-pill badge-primary float-right";
-      pill.innerText = a + "A" + b + "B";
-      list.appendChild(li).appendChild(pill);
-      input.value = "";
-      if (a == 4){
+      if (a == 4) {
+        pill.className = "badge badge-pill badge-danger float-right";
+        pill.innerText = a + "A" + b + "B";
+        list.appendChild(li).appendChild(pill);
+        input.value = "";
         alert("猜對了!");
+      } else {
+        pill.className = "badge badge-pill badge-primary float-right";
+        pill.innerText = a + "A" + b + "B";
+        list.appendChild(li).appendChild(pill);
+        input.value = "";
       }
+
+
     }
 
     clear.onclick = function () {
