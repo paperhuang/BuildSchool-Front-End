@@ -35,16 +35,14 @@
             </div>
             <div class="col">
                 <button type="button" class="btn btn-dark" id="left">
-                    <i class="fas fa-caret-left"></i>
+                    ◄
                 </button>
                 <button type="button" class="btn btn-dark" id="right">
-                    <i class="fas fa-caret-right"></i>
+                    ►
                 </button>
             </div>
             <div class="col">
-                <div class="form-group">
-                    <input type="date" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                </div>
+                
             </div>
             <div class="col">
                 <!-- Button trigger modal -->
@@ -135,7 +133,7 @@
                             </div>
                             <div class="col-10">
                                 <input type="text" class="form-control" name="" id="place" aria-describedby="helpId" placeholder="">
-                                <button id="addplace" type="button" class="btn btn-dark">+</button>
+                                <button id="addplace" type="button" class="btn btn-dark">➥</button>
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -409,7 +407,7 @@
             document.getElementById("date").value = "";
             document.getElementById("time").value = "";
             document.getElementById("title").value = "";
-            document.getElementById("color").value = "#FF0080";
+            document.getElementById("color").value = "#F9A3A3";
             document.getElementById("place").value = "";
 
             var ul = document.createElement("ul");
@@ -429,7 +427,7 @@
                 button.onclick = function () {
                     console.log(this.id);
                     var tmp = this.id.split(',')
-                    console.log(tmp) // 2018-04-01 , 0
+                    console.log(tmp)
                     var store = JSON.parse(localStorage.getItem(tmp[0])).schedule[tmp[1]];
                     console.log(store);
                     document.getElementById("modifydate").value = tmp[0];
@@ -449,7 +447,7 @@
                     })
                 }
                 console.log(i.color);
-                button.innerHTML = i.time + "<br>" + i.title;
+                button.innerHTML = i.time + "&nbsp&nbsp" + i.title;
                 li.appendChild(button);
                 ul.appendChild(li);
                 j++;
