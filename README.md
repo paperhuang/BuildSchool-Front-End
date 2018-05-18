@@ -1,8 +1,6 @@
 > ### 行事曆
 
-* 運用技術
-    * HTML
-    * CSS    
+* 運用技術：HTML、CSS、Bootstrap、JavaScript、jQuery、Google Maps API、ajax
 
 ![Foo](https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Calendar.png "行事曆")  
 [作品連結](https://papersblog.azurewebsites.net/%E8%A1%8C%E4%BA%8B%E6%9B%86/)
@@ -22,7 +20,7 @@
     * HTML
     * CSS    
 
-![Foo](https://dummyimage.com/200x200 "遊程規劃")  
+![Foo](https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Travel.png "遊程規劃")  
 [作品連結](https://papersblog.azurewebsites.net/%E9%81%8A%E7%A8%8B%E8%A6%8F%E5%8A%83/)
 ***
 > ### 猜數字
