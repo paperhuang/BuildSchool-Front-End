@@ -2,140 +2,142 @@
 <html lang="en">
 
 <head>
-  <title>猜數字</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Password</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <style>
-      body{
-        font-family: Microsoft JhengHei;
-        font-size:17px;
-      }
+        body {
+            font-family: Microsoft JhengHei;
+        }
     </style>
 </head>
+
 <body>
-  <div class="container mt-5" style="position:relative">
-    <div class="row">
-      <div class="col-3">
-        <button type="button" class="btn btn-dark btn-block" id="start" style="font-size:17px">開始遊戲</button>
-      </div>
-      <div class="col-6" style="position: absolute;left:300px">
-        <p>遊戲歷程</p>
-        <ul class="list-group" id="list">
-
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3">
-        <button type="button" class="btn btn-dark btn-block mt-3" id="answer" style="font-size:17px" disabled="true">看答案</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-3 mt-5">
-        <div class="form-group">
-          <label for="">輸入數字</label>
-          <input type="text" name="" id="input" class="form-control" placeholder="" aria-describedby="helpId">
+    <div class="container text-center" style="width:500px">
+        <div class="row">
+            <div class="col mt-5">
+                <p style="font-size:26px"><b>終極密碼</b></p>
+            </div>
         </div>
-      </div>
+        <div class="row mt-2">
+            <div class="col offset-3">
+                <input type="text" class="form-control" id="input" placeholder="請猜數字" style="width: 220px;text-align: center" >
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <button type="button" class="btn rounded-circle" id="one">1</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="two">2</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="three">3</button>&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button type="button" class="btn rounded-circle" id="four">4</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="five">5</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="six">6</button>&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button type="button" class="btn rounded-circle" id="seven">7</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="eight">8</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="nine">9</button>&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <button type="clear" class="btn" id="clear">x</button>&nbsp;&nbsp;
+                <button type="button" class="btn rounded-circle" id="zero">0</button>&nbsp;&nbsp;
+                <button type="guess" class="btn" id="guess">猜</button>&nbsp;&nbsp;
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <p>---------------------------------</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <p>範圍在&nbsp;&nbsp;<span id="min">0</span>&nbsp;&nbsp;&nbsp;<span>到&nbsp;&nbsp;</span><span id="max">100</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <p>答題次數&nbsp;&nbsp;<span id="time">0</span>&nbsp;&nbsp;&nbsp;<span>剩餘次數&nbsp;&nbsp;</span><span id="settime">5</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-3 mt-3">
-        <button type="button" class="btn btn-dark btn-block" id="check" style="font-size:17px" disabled="true">檢查答案</button>
-      </div>
+    <script>
+        answer = Math.floor(Math.random() * 100);
+        console.log(answer);
+        max = 100;
+        min = 1;
 
-    </div>
-    <div class="row">
-      <div class="col-3  mt-3">
-        <button type="button" class="btn btn-dark btn-block" id="clear" style="font-size:17px" disabled="true">放棄重來</button>
-      </div>
-    </div>
-  </div>
-  <script>
-    var randomnumber = "";
-    var start = document.getElementById("start");
-    var input = document.getElementById("input");
-    var check = document.getElementById("check");
-    var clear = document.getElementById("clear");
-
-    var list = document.getElementById("list");
-
-    start.onclick = function () {
-      randomnumber = "";
-      for (var i = 0; i <= 3;) {
-        var number = Math.floor(Math.random() * 10);
-        if (!randomnumber.includes(number)) {
-          randomnumber += number;
-          i++;
+        document.querySelectorAll("button[type=button").forEach(element => {
+            element.onclick = function () {
+                document.getElementById("input").value += element.innerText;
+            }
+        });
+        clear = document.getElementById("clear");
+        clear.onclick = function () {
+            document.getElementById("input").value = "";
         }
-      }
-      console.log(randomnumber);
-      start.disabled = true;
-      check.disabled = false;
-      answer.disabled = false;
-      clear.disabled = false;
-    }
-
-    var answer = document.getElementById("answer");
-    answer.onclick = function () {
-      alert("答案是 " + randomnumber);
-    }
-
-    check.onclick = function () {
-      var a = 0;
-      var b = 0;
-      for (var i = 0; i <= 3; i++) {
-        if (randomnumber.includes(input.value[i])) {
-          if (randomnumber[i] == input.value[i]) {
-            a++;
-          } else {
-            b++;
-          }
+        time = 0;
+        settime = 5;
+        guess = document.getElementById("guess");
+        guess.onclick = function () {
+            input = document.getElementById("input").value;
+            console.log(document.getElementById("input").value);
+            document.getElementById("input").value = "";
+            if (input > answer) {
+                max = input;
+                document.getElementById("min").innerText = min;
+                document.getElementById("max").innerText = max;
+                time = time + 1;
+                document.getElementById("time").innerText = time;
+                settime = settime - 1;
+                document.getElementById("settime").innerText = settime;
+                if (settime == 0) {
+                    document.getElementById("guess").disabled = true;
+                }
+            } else if (input < answer) {
+                min = input;
+                document.getElementById("min").innerText = min;
+                document.getElementById("max").innerText = max;
+                time = time + 1;
+                document.getElementById("time").innerText = time;
+                settime = settime - 1;
+                document.getElementById("settime").innerText = settime;
+                if (settime == 0) {
+                    document.getElementById("guess").disabled = true;
+                }
+            } else {
+                alert("猜對了");
+            }
         }
-      }
-      console.log(input.value);
-      var li = document.createElement("li");
-      li.innerText = input.value;
-      li.className = "list-group-item";
-      var pill = document.createElement("div");
-      pill.className = "badge badge-pill badge-primary float-right";
-      pill.innerText = a + "A" + b + "B";
-      list.appendChild(li).appendChild(pill);
-      input.value = "";
-      if (a == 4){
-        alert("猜對了!");
-      }
-    }
-
-    clear.onclick = function () {
-      input.value = "";
-      list.innerHTML = "";
-      randomnumber = "";
-      for (var i = 0; i <= 3;) {
-        var number = Math.floor(Math.random() * 10);
-        if (!randomnumber.includes(number)) {
-          randomnumber += number;
-          i++;
-        }
-      }
-      start.disabled = false;
-      answer.disabled = true;
-      check.disabled = true;
-      clear.disabled = true;
-    }
-  </script>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
