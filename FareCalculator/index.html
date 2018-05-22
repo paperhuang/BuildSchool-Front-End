@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>預估交通費用計算</title>
     <meta charset="utf-8">
@@ -7,6 +6,8 @@
     <style>
         body {
             font-family: Microsoft JhengHei;
+            text-align: center;
+            margin-top: 30px;
         }
 
         .mapstyle {
@@ -21,8 +22,7 @@
             width: 200px;
             text-align: left;
             float: left;
-            margin-left: 20px;
-            margin-top: 10px;
+            margin: 10px 0 0 20px;
         }
 
         .directionstyle {
@@ -33,9 +33,8 @@
 
         .transitdirectionstyle {
             width: 300px;
-            margin-left: 20px;
             float: left;
-            margin-top: 15px;
+            margin-top: 15px 0 0 20px;
         }
     </style>
 </head>
@@ -43,7 +42,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col" style="text-align: center;margin-top: 30px">
+            <div class="col" >
                 <p><b style="font-size:26px">預估交通費用計算&nbsp;</b><span>(請自行點選兩地)</span></p>
             </div>
         </div>
@@ -198,8 +197,8 @@
                                     console.log(distance);
                                     for (var k of j.steps) {
                                         console.log(k);
-                                        if (k.instructions.indexOf("收費路段") > -1) { //== k.instructions.includes("收費路段") 回傳true或false
-                                            highway += parseFloat(k.distance.text.split(' ')[0]); //割開之後是"1.6,公里"，拿出第0個的公里數
+                                        if (k.instructions.indexOf("收費路段") > -1) {
+                                            highway += parseFloat(k.distance.text.split(' ')[0]);
                                             console.log(highway);
                                             console.log(k.instructions);
                                         }
@@ -245,10 +244,7 @@
                             }
                         })
                     }
-
                 });
-
-
             }
         </script>
 </body>
