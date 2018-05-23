@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>溫度轉換</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Microsoft JhengHei;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" style="margin-top:100px">
+            <div class="col offset-3">
+                <p>請選擇轉換方式：</p>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="abc" id="unitCF">
+                        <p>攝氏轉換為華氏</p>
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="abc" id="unitFC">
+                        <p>華氏轉換為攝氏</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-1 offset-3">
+                <button type="button" class="btn btn-block">1</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">2</button>
+            </div>
+            <div class="col-1 ">
+                <button type="button" class="btn btn-block">3</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-1 offset-3">
+                <button type="button" class="btn btn-block">4</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">5</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">6</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-1 offset-3">
+                <button type="button" class="btn btn-block">7</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">8</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">9</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-1 offset-3">
+                <button type="button" class="btn btn-block">0</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-block">.</button>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-4 offset-3">
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                        name="" id="txtTempC" aria-describedby="helpId" placeholder="請輸入溫度">
+                </div>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary" id="change">轉換</button>
+                <button type="button" class="btn btn-danger" id="clear">清除</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="input-group input-group-sm ">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">結果</span>
+                    </div>
+                    <input type="text" class="form-control" id="result" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+        <script>
+            var buttons = document.getElementsByTagName("button");
+            for (var i = 0; i < buttons.length; i++) {
+                var button = buttons[i];
+                button.onclick = function () {
+                    var btn = event.srcElement;
+                    document.getElementById("txtTempC").value += btn.innerText;
+                }
+            }
+
+            var optCF = document.getElementById("unitCF");
+            var optFC = document.getElementById("unitFC");
+
+            console.log(optCF.checked);
+            console.log(optFC.checked);
+
+            var change = document.getElementById("change");
+
+            change.onclick = function () {
+                var input = document.getElementById("txtTempC").value;
+                console.log(input);
+                if (optCF.checked) {
+                    document.getElementById("result").value = ((input * 1.8) + 32).toFixed(2);
+                } else if (optFC.checked) {
+                    document.getElementById("result").value = ((input - 32) / 1.8).toFixed(2);
+                }
+            }
+
+            var clear = document.getElementById("clear");
+            clear.onclick = function () {
+                document.getElementById("txtTempC").value = "";
+                document.getElementById("result").value = "";
+            }
+        </script>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
