@@ -68,3 +68,9 @@
 [Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/BuildSchool)
 
 ***
+> ### 第一個部落格 First Blog
+
+<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Blog.png " width="70%"/>
+
+[Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/FirstBlog)
+***
