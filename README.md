@@ -1,6 +1,7 @@
 > ### 行事曆 Calendar
 
-![Foo](https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Calendar.png "行事曆")  
+<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Calendar.png" width="300"/>
+
 [Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/Calendar)
 
 ***
