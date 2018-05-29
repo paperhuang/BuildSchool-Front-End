@@ -1,0 +1,178 @@
+body{
+    font-family: Microsoft JhengHei;
+    line-height: 1.5em;
+    color:#000000;
+}
+
+.container{
+    width:1000px;
+    margin: 0 auto;
+}
+
+a{
+    color:#7a7979;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #2e8baf;
+}
+
+h1.title{
+    margin: 80px;
+}
+
+.header .container{
+    position: relative;
+}
+
+.header .slogan{
+    position: absolute;
+    right:0;
+    top:0;
+}
+
+.slogan strong{
+    font-size:1.5em;
+    color: #2e8baf;
+}
+
+.main-menu{
+    background: #78bad4;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.main-menu ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+
+.main-menu ul li{
+    float: left;
+    width:20%;
+}
+
+.main-menu ul li a{
+    display: block;
+    padding:8px 0;
+    text-align: center;
+    font-size: 16px;
+    color:#2c2c2c;
+}
+
+.main-menu ul li a:hover{
+    background: #2e8baf;
+}
+
+.content .main{
+    width:720px;
+    float:left;
+    padding-bottom:30px;
+}
+
+.content .side{
+    width:240px;
+    float:right;
+    margin-right: 10px;
+    padding-bottom: 30px;
+}
+
+.footer{
+    background: #d8d8d8;
+    font-size:13px;
+    text-align: right;
+    padding:20px 0 20px;
+    clear: both;
+}
+
+.side-title1{
+    padding-bottom: 3px;
+    border-bottom:3px solid #7a7979;
+}
+
+.best li{
+    line-height: 1.5em;
+    padding-bottom: 10px;
+}
+
+.side-title2{
+    padding-bottom: 3px;
+    border-bottom:3px solid #7a7979;
+}
+
+.product li{
+    line-height: 1.5em;
+    padding-bottom: 10px;
+}
+
+.music{
+    padding-bottom: 3px;
+    border-bottom:3px solid #7a7979;
+}
+
+.headline{
+    padding:10px 10px 10px 320px;
+    margin-bottom: 20px;
+    font-size:14px;
+    line-height: 1.7em;
+    position: relative;
+    min-height: 300px;
+    border-bottom: 3px solid #5da8c5;
+}
+
+.headline img{
+    position: absolute;
+    left:10px;
+}
+
+.headline h2{
+    margin-top: 0;
+    border-bottom: 1px solid #78bad4;
+}
+
+.headline .add{
+    margin-top: 100px;
+    display:block;
+    text-align: right;
+}
+
+.cakelist{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+
+.cake{
+    box-sizing: border-box;
+    width:350px;
+    height:225px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size:14px;
+    line-height: 1.7em;
+    overflow: hidden;
+    float: left;
+    border-bottom:3px solid #5da8c5;
+}
+
+.cake h2{
+    margin-top: 1px;
+    line-height: 1.3em;
+    border-bottom: 1px solid #78bad4;
+}
+
+.cake img{
+    float: left;
+    margin:0 10px 10px 0;
+}
+
+.cake .add{
+    display: block;
+    text-align: right;
+}
+
+.cake:nth-child(odd){
+    margin-right:20px;
+}
