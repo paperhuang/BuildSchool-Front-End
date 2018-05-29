@@ -28,7 +28,7 @@
 ***  
 > ### 終極密碼 Password   
 
-<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Password.png" width="70%"/>
+<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Password.png" width="50%"/>
 
 [Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/Password)
 
