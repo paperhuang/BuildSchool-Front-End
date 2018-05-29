@@ -7,7 +7,8 @@
 ***
 > ### 預估交通費用計算 FareCalculator  
 
-![Foo](https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/FareCalculator.png "預估交通費用計算")  
+<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/FareCalculator.png" width="65%"/>
+
 [Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/FareCalculator)
 
 ***
