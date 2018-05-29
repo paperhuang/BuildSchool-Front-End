@@ -1,6 +1,6 @@
 > ### 行事曆 Calendar
 
-<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Calendar.png" width="70%"/>
+<img src="https://raw.githubusercontent.com/paperhuang/BuildSchool-Front-End/master/Pictures/Calendar.png" width="65%"/>
 
 [Read more](https://github.com/paperhuang/BuildSchool-Front-End/tree/master/Calendar)
 
