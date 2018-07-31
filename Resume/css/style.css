@@ -617,6 +617,10 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 350px;
   float: left;
 }
+.author-inner img {
+  width: 100%;
+  border-radius: 30px;
+}
 @media screen and (max-width: 480px) {
   .author .author-inner {
     width: 100%;
