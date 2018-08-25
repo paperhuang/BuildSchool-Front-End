@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Exchange Rate</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" id="rate">
+        <div class="background">
+            <h4>匯率</h4>
+            <div class="row">
+                <div class="col">
+                    <h6>請輸入新台幣</h6>
+                    <div class="input-group">
+                        <input type="text" class="form-control text-right" v-model="NTD" maxlength="13">
+                        <div class="input-group-append">
+                            <button class="btn btn-cal" type="button" v-on:click="calculate(NTD)">計算</button>
+                        </div>
+                    </div>
+                    <span class="ntd">NTD</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <ul>
+                        <li>日幣</li>
+                        <li>美元</li>
+                        <li>澳幣</li>
+                        <li>港幣</li>
+                        <li>歐元</li>
+                    </ul>
+                </div>
+                <div class="col-5 text-right">
+                    <ul>
+                        <li>
+                            <span>{{JPY}}</span>
+                        </li>
+                        <li>
+                            <span>{{USD}}</span>
+                        </li>
+                        <li>
+                            <span>{{AUD}}</span>
+                        </li>
+                        <li>
+                            <span>{{HKD}}</span>
+                        </li>
+                        <li>
+                            <span>{{EUR}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+                        <li>JPY</li>
+                        <li>USD</li>
+                        <li>AUD</li>
+                        <li>HKD</li>
+                        <li>EUR</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+
+    <script>
+        var rate = new Vue({
+            el: '#rate',
+            data: {
+                NTD: '',
+                JPY: 0,
+                USD: 0,
+                AUD: 0,
+                HKD: 0,
+                EUR: 0,
+            },
+            methods: {
+                calculate: function (NTD) {
+                    this.JPY = (this.NTD * 3.57398).toFixed(2);
+                    this.USD = (this.NTD * 0.03221).toFixed(2);
+                    this.AUD = (this.NTD * 0.04388).toFixed(2);
+                    this.HKD = (this.NTD * 0.25189).toFixed(2);
+                    this.EUR = (this.NTD * 0.02770).toFixed(2);
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+body {
+    font-family: Microsoft JhengHei;
+    color: #505050;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+.background {
+    background: #EAEBEA;
+    margin: 80px auto;
+    padding: 50px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.input-group {
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.form-control {
+    padding-right: 50px;
+}
+
+.form-control:focus {
+    outline: 0;
+    border: 1px solid #EAEBEA;
+    box-shadow: 0 0 10px #388697;
+}
+
+.btn-cal {
+    background: #5C9CA9;
+    color: #fff;
+}
+
+.btn-cal:hover {
+    background: #388697;
+    color: #fff;
+    transition: .3s;
+}
+
+.btn-cal:focus {
+    box-shadow: none;
+}
+
+.ntd {
+    position: absolute;
+    right: 180px;
+    top: 33px;
+    z-index: 5;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    line-height: 28px;
+}
